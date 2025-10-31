@@ -1,11 +1,11 @@
 // App Identity
-export const APP_NAME = 'Nógrafo';
+export const APP_NAME = 'Nografo';
 export const APP_NAME_SLUG = 'nografo';
 export const APP_VERSION = '1.0.0';
 export const API_VERSION = 'v1';
 
 // Company/Project Info
-export const PROJECT_NAME = 'Nógrafo Project';
+export const PROJECT_NAME = 'Nografo Project';
 export const APP_ID = 'com.nografo.app';
 export const GITHUB_REPO = 'https://github.com/patrick-mns/nografo';
 

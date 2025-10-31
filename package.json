@@ -103,7 +103,7 @@
   },
   "build": {
     "appId": "com.nografo.app",
-    "productName": "Nógrafo",
+    "productName": "Nografo",
     "copyright": "Copyright © 2025",
     "directories": {
       "output": "release",
@@ -159,7 +159,7 @@
           "path": "/Applications"
         }
       ],
-      "title": "Nógrafo ${version}",
+      "title": "Nografo ${version}",
       "window": {
         "width": 540,
         "height": 380

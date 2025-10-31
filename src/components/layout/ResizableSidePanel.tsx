@@ -55,10 +55,10 @@ export const ResizableSidePanel: React.FC<ResizableSidePanelProps> = ({
         const finalWidth = Math.min(clampedWidth, maxAllowedWidth);
 
         setWidth(finalWidth);
-      }
-
-      if (onWidthChange) {
-        onWidthChange(newWidth < MINIMIZE_THRESHOLD ? 0 : newWidth);
+        
+        if (onWidthChange) {
+          onWidthChange(finalWidth);
+        }
       }
     },
     [isResizing, minWidth, maxWidth, onWidthChange]

@@ -70,9 +70,9 @@ export function useContextExport() {
         });
 
         if (isElectronEnv && workspaceAPI) {
-          await workspaceAPI.writeFile('current-context.md', markdown);
+          await workspaceAPI.writeFile('.nografo/current-context.md', markdown);
         } else {
-          await virtualWorkspaceManager.writeFile('current-context.md', markdown);
+          await virtualWorkspaceManager.writeFile('.nografo/current-context.md', markdown);
         }
 
         return true;

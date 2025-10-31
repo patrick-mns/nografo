@@ -38,10 +38,10 @@ export const ResizableLeftPanel: React.FC<ResizableLeftPanelProps> = ({
       } else {
         const constrainedWidth = Math.min(Math.max(newWidth, minWidth), maxWidth);
         setWidth(constrainedWidth);
-      }
-
-      if (onWidthChange) {
-        onWidthChange(newWidth < MINIMIZE_THRESHOLD ? 0 : newWidth);
+        
+        if (onWidthChange) {
+          onWidthChange(constrainedWidth);
+        }
       }
     },
     [isResizing, minWidth, maxWidth, onWidthChange]

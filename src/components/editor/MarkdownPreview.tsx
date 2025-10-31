@@ -42,21 +42,22 @@ export const MarkdownPreview: React.FC = () => {
       let fileContent;
 
       if (isElectronEnv && workspaceAPI) {
-        fileContent = await workspaceAPI.readFile('current-context.md');
+        fileContent = await workspaceAPI.readFile('.nografo/current-context.md');
       } else {
-        fileContent = await virtualWorkspaceManager.readFile('current-context.md');
+        fileContent = await virtualWorkspaceManager.readFile('.nografo/current-context.md');
       }
 
       setMarkdown(
-        fileContent.content || '# No Context\n\nNo active context found in `current-context.md`.'
+        fileContent.content ||
+          '# No Context\n\nNo active context found in `.nografo/current-context.md`.'
       );
       setLastUpdate(Date.now());
     } catch (error) {
-      console.error('Error reading current-context.md:', error);
+      console.error('Error reading .nografo/current-context.md:', error);
 
       if (isElectronEnv) {
         setMarkdown(
-          '# Error Loading Context\n\nCould not read `current-context.md`. Make sure the file exists.'
+          '# Error Loading Context\n\nCould not read `.nografo/current-context.md`. Make sure the file exists.'
         );
         toast({
           variant: 'destructive',

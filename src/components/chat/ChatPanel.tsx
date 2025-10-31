@@ -257,7 +257,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({ className = '', chatMode }
           command,
           currentGraph?.id || 'current'
         );
-        console.log('[ChatPanel] Context automatically saved to current-context.md');
+        console.log('[ChatPanel] Context automatically saved to .nografo/current-context.md');
       } catch (error) {
         console.warn('[ChatPanel] Failed to auto-save context:', error);
       }

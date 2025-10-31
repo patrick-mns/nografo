@@ -33,13 +33,43 @@ export const useUIStore = create<UIState>()(
       isSidePanelOpen: false,
       isPreviewPanelOpen: false,
       panelSizes: {},
-      openChatPanel: () => set({ isChatPanelOpen: true }),
+      openChatPanel: () =>
+        set((state) => {
+          const currentSize = state.panelSizes.chatPanel;
+          const shouldReset = currentSize !== undefined && currentSize < 100;
+          return {
+            isChatPanelOpen: true,
+            panelSizes: shouldReset
+              ? { ...state.panelSizes, chatPanel: DEFAULT_PANEL_SIZES.chatPanel }
+              : state.panelSizes,
+          };
+        }),
       closeChatPanel: () => set({ isChatPanelOpen: false }),
       toggleChatPanel: () => set((state) => ({ isChatPanelOpen: !state.isChatPanelOpen })),
-      openSidePanel: () => set({ isSidePanelOpen: true }),
+      openSidePanel: () =>
+        set((state) => {
+          const currentSize = state.panelSizes.sidePanel;
+          const shouldReset = currentSize !== undefined && currentSize < 100;
+          return {
+            isSidePanelOpen: true,
+            panelSizes: shouldReset
+              ? { ...state.panelSizes, sidePanel: DEFAULT_PANEL_SIZES.sidePanel }
+              : state.panelSizes,
+          };
+        }),
       closeSidePanel: () => set({ isSidePanelOpen: false }),
       toggleSidePanel: () => set((state) => ({ isSidePanelOpen: !state.isSidePanelOpen })),
-      openPreviewPanel: () => set({ isPreviewPanelOpen: true }),
+      openPreviewPanel: () =>
+        set((state) => {
+          const currentSize = state.panelSizes.previewPanel;
+          const shouldReset = currentSize !== undefined && currentSize < 100;
+          return {
+            isPreviewPanelOpen: true,
+            panelSizes: shouldReset
+              ? { ...state.panelSizes, previewPanel: DEFAULT_PANEL_SIZES.previewPanel }
+              : state.panelSizes,
+          };
+        }),
       closePreviewPanel: () => set({ isPreviewPanelOpen: false }),
       togglePreviewPanel: () => set((state) => ({ isPreviewPanelOpen: !state.isPreviewPanelOpen })),
       getPanelSize: (panelType: PanelType) => {

@@ -1,5 +1,5 @@
 import { Button } from '../ui/button';
-import { Folder, ChevronDown, FolderOpen, Settings, Check, Loader2 } from 'lucide-react';
+import { Folder, ChevronDown, FolderOpen, Settings, Check, Loader2, Github } from 'lucide-react';
 import { useWorkspace } from '@/contexts/WorkspaceContext';
 import { useGraphStore } from '@/store/graphStore';
 import { useState, useEffect, useRef } from 'react';
@@ -128,6 +128,15 @@ export function WorkspaceBar() {
             variant="ghost"
             size="sm"
             className="h-7 w-7 p-0"
+            onClick={() => window.open('https://github.com/patrick-mns/nografo', '_blank')}
+            title="GitHub Repository"
+          >
+            <Github className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="h-7 w-7 p-0"
             onClick={() => setIsSettingsOpen(true)}
           >
             <Settings className="h-4 w-4" />
@@ -205,6 +214,16 @@ export function WorkspaceBar() {
         )}
 
         <div className="flex-1" />
+        <Button
+          variant="ghost"
+          size="sm"
+          className="h-7 w-7 p-0"
+          onClick={() => window.open('https://github.com/patrick-mns/nografo', '_blank')}
+          style={{ WebkitAppRegion: 'no-drag' } as React.CSSProperties}
+          title="GitHub Repository"
+        >
+          <Github className="h-4 w-4" />
+        </Button>
         <Button
           variant="ghost"
           size="sm"

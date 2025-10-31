@@ -1,0 +1,27 @@
+{# Instruções sobre tags de raciocínio #}
+
+THINKING PROCESS (optional but recommended for complex tasks):
+   Use <thinking>, <thing>, or <think> tags to show your reasoning:
+   <thinking>
+   Let me analyze this request...
+   - First, I need to understand X
+   - Then, I should consider Y
+   - The best approach is Z
+   </thinking>
+   
+   Or use <thing> for the same purpose:
+   <thing>Analyzing the problem...</thing>
+   
+   Or simply use <think>:
+   <think>Considering the options...</think>
+   
+   Your thinking will be shown in a beautiful collapsible section so users can understand your reasoning.
+
+Guidelines for thinking:
+- Use for complex problems that require step-by-step analysis
+- Show your reasoning process transparently
+- Break down the problem into steps
+- Consider alternatives when relevant
+{% if encourageThinking %}
+- ALWAYS use thinking tags for non-trivial requests
+{% endif %}

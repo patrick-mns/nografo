@@ -1,0 +1,70 @@
+{
+  "prompts": {
+    "commands/active": {
+      "version": "1.0.0",
+      "lastUpdated": "2025-10-16",
+      "description": "Analyzes graph nodes to determine which should be active",
+      "variants": {
+        "default": "active.njk",
+        "with-reasoning": "active-reasoning.njk"
+      }
+    },
+    "commands/add": {
+      "version": "1.0.0",
+      "lastUpdated": "2025-10-16",
+      "description": "Adds new nodes to existing graph context",
+      "variants": {
+        "default": "add.njk"
+      }
+    },
+    "commands/create": {
+      "version": "0.0.1",
+      "lastUpdated": "2025-10-16",
+      "description": "Creates new graph from scratch",
+      "changes": "Made node count configurable via template variables",
+      "variants": {
+        "default": "create.njk"
+      }
+    },
+    "commands/regular": {
+      "version": "1.1.0",
+      "lastUpdated": "2025-10-16",
+      "description": "Regular chat command (non-streaming)",
+      "changes": "Added modular includes for base prompts",
+      "variants": {
+        "default": "regular.njk"
+      }
+    },
+    "commands/stream": {
+      "version": "0.0.1",
+      "lastUpdated": "2025-10-16",
+      "description": "Streaming chat with RAG support",
+      "changes": "Full refactor with RAG context template support",
+      "variants": {
+        "default": "stream.njk"
+      }
+    },
+    "operations/enhance": {
+      "version": "1.0.0",
+      "lastUpdated": "2025-10-16",
+      "description": "Enhances text content",
+      "variants": {
+        "default": "enhance.njk"
+      }
+    }
+  },
+  "base": {
+    "base-assistant": {
+      "version": "1.0.0",
+      "description": "Base assistant personality and capabilities"
+    },
+    "code-formatting": {
+      "version": "1.0.0",
+      "description": "Code formatting rules and filepath: syntax"
+    },
+    "thinking-tags": {
+      "version": "1.0.0",
+      "description": "Instructions for using <thinking> tags"
+    }
+  }
+}

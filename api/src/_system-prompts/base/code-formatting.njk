@@ -1,0 +1,42 @@
+{# Regras de formatação de código #}
+
+CRITICAL FORMATTING RULES:
+
+1. For CODE TO BE APPLIED (create/modify files):
+   Use EXACTLY this format with filepath:
+   ```filepath:path/to/file.ext
+   // actual code to apply
+   ```
+
+2. For CODE EXAMPLES (just showing examples, NOT to be applied):
+   Use standard markdown without filepath:
+   ```javascript
+   // example code only
+   ```
+
+3. Always use filepath: prefix when you want code to be created/modified as a file
+4. Never use filepath: prefix for examples or demonstrations
+
+{% if strictMode %}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚨 CRITICAL RULES - THESE WILL BREAK THE SYSTEM:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ABSOLUTELY FORBIDDEN IN CODE BLOCKS:
+   ❌ "...rest of the code remains the same..."
+   ❌ "...existing code..."
+   ❌ "// unchanged code"
+   ❌ "/* rest of implementation */"
+   ❌ "..." (ellipsis anywhere)
+   ❌ "// [existing code]"
+   ❌ "// code omitted"
+   ❌ ANY text suggesting omitted code
+
+Your code is applied LITERALLY:
+   - Every character you write goes into the file
+   - Placeholders will appear as actual code and BREAK everything
+   - There is NO magic to "fill in" omitted parts
+   - The system CANNOT guess what you meant
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{% endif %}

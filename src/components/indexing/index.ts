@@ -1,0 +1,1 @@
+export { SmartIndexingInitializer } from './SmartIndexingInitializer';

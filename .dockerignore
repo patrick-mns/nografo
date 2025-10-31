@@ -1,0 +1,20 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+README.md
+.env
+.nyc_output
+coverage
+.coverage
+.vscode
+.idea
+*.log
+# dist folder is needed for production build
+electron
+build
+release
+docs
+api/node_modules
+*.md
+LICENSE*

@@ -1,0 +1,184 @@
+{
+  "name": "nografo",
+  "version": "0.0.1",
+  "description": "",
+  "private": false,
+  "type": "commonjs",
+  "main": "electron/main.js",
+  "homepage": ".",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "dev:api": "cd api && npm run dev",
+    "dev:full": "concurrently \"npm run dev\" \"npm run dev:api\"",
+    "build": "vite build --mode web",
+    "build:quick": "vite build",
+    "build:web": "tsc -b && vite build --mode web",
+    "build:web-only": "vite build --mode web",
+    "build:production": "NODE_ENV=production vite build --mode web",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "check": "npm run format:check && npm run lint && npm run type-check",
+    "fix": "npm run format && npm run lint:fix",
+    "preview": "vite preview",
+    "serve": "vite preview --port 4173",
+    "serve:web": "vite preview --port 4173 --mode web",
+    "serve:production": "vite preview --port $PORT --host 0.0.0.0 --mode web",
+    "type-check": "tsc --noEmit",
+    "electron": "cross-env ELECTRON_DEV=true electron .",
+    "electron:dev": "concurrently -n \"vite,api,electron\" -c \"blue,green,magenta\" \"cross-env BROWSER=none npm run dev\" \"npm run dev:api\" \"wait-on http://localhost:3000 http://localhost:3001/health && cross-env ELECTRON_DEV=true electron .\"",
+    "electron:rebuild": "electron-rebuild -f -w hnswlib-node,sharp",
+    "electron:build": "npm run build && npm run electron:rebuild && electron-builder",
+    "electron:build:quick": "npm run build:quick && npm run electron:rebuild && electron-builder --mac",
+    "electron:build:mac": "npm run build && npm run electron:rebuild && electron-builder --mac",
+    "electron:build:dir": "npm run build && npm run electron:rebuild && electron-builder --dir",
+    "postinstall": "npm run electron:rebuild"
+  },
+  "dependencies": {
+    "@radix-ui/react-checkbox": "^1.3.3",
+    "@radix-ui/react-collapsible": "^1.1.12",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-radio-group": "^1.3.8",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-switch": "^1.2.6",
+    "@radix-ui/react-toast": "^1.2.15",
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.3.0",
+    "@xenova/transformers": "^2.17.2",
+    "chokidar": "^3.6.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "hnswlib-node": "^3.0.0",
+    "isomorphic-git": "^1.34.0",
+    "lucide-react": "^0.544.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-force-graph-3d": "^1.29.0",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.9.1",
+    "react-syntax-highlighter": "^15.6.6",
+    "reactflow": "^11.11.4",
+    "remark-gfm": "^4.0.1",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.180.0",
+    "three-spritetext": "^1.10.0",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^4.0.1",
+    "@eslint/js": "^9.33.0",
+    "@types/node": "^24.3.1",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^38.2.0",
+    "electron-builder": "^26.0.12",
+    "electron-rebuild": "^3.2.9",
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "png2icons": "^2.0.1",
+    "postcss": "^8.5.6",
+    "prettier": "^3.6.2",
+    "sharp": "^0.34.4",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.39.1",
+    "vite": "^7.1.2",
+    "wait-on": "^9.0.1"
+  },
+  "build": {
+    "appId": "com.nografo.app",
+    "productName": "Nógrafo",
+    "copyright": "Copyright © 2025",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "node_modules/**/*",
+      "package.json",
+      "!node_modules/png2icons/**/*"
+    ],
+    "asarUnpack": [
+      "node_modules/@xenova/**/*",
+      "node_modules/hnswlib-node/**/*",
+      "node_modules/sharp/**/*",
+      "node_modules/@img/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.icns",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "title": "Nógrafo ${version}",
+      "window": {
+        "width": 540,
+        "height": 380
+      }
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "build/icon.png",
+      "category": "Development"
+    }
+  }
+}
